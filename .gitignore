@@ -10,6 +10,7 @@ __pycache__/
 dist/
 build/
 parsed_data/
+benchmark_dataset/
 *.log
 .venv/
 venv/
