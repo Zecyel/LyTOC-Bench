@@ -68,76 +68,15 @@ def split_exercises(content, hw_number):
             if len(exercise_content) < 10:
                 continue
 
-            # Check if this exercise has sub-problems (1), 2), etc.)
-            sub_problems = split_sub_problems(exercise_content)
-
-            if sub_problems:
-                # Has sub-problems, create separate entries for each
-                for sub_num, sub_content in sub_problems:
-                    exercises.append({
-                        "homework": f"hw{hw_number}",
-                        "exercise_number": exercise_num,
-                        "sub_problem": sub_num,
-                        "content": sub_content.strip(),
-                        "full_id": f"hw{hw_number}_ex{exercise_num}_{sub_num}"
-                    })
-            else:
-                # No sub-problems, single exercise
-                exercises.append({
-                    "homework": f"hw{hw_number}",
-                    "exercise_number": exercise_num,
-                    "sub_problem": None,
-                    "content": exercise_content.strip(),
-                    "full_id": f"hw{hw_number}_ex{exercise_num}"
-                })
+            # No sub-problem splitting, treat each exercise as a single unit
+            exercises.append({
+                "homework": f"hw{hw_number}",
+                "exercise_number": exercise_num,
+                "content": exercise_content.strip(),
+                "full_id": f"hw{hw_number}_ex{exercise_num}"
+            })
 
     return exercises
-
-
-def split_sub_problems(content):
-    """
-    Split exercise content into sub-problems if they exist.
-
-    Pattern matches:
-    - "1) sub-problem content"
-    - "2) sub-problem content"
-
-    Returns:
-        List of (sub_number, sub_content) tuples, or empty list if no sub-problems
-    """
-    # Pattern to match sub-problem numbers: "1)" or "2)" at start of line
-    sub_pattern = r'^(\d+)\)\s+'
-
-    # Check if there are sub-problems
-    if not re.search(sub_pattern, content, flags=re.MULTILINE):
-        return []
-
-    # Split by sub-problem numbers
-    parts = re.split(sub_pattern, content, flags=re.MULTILINE)
-
-    # If split resulted in meaningful parts, extract sub-problems
-    if len(parts) <= 2:
-        return []
-
-    sub_problems = []
-    # Get the intro text before first sub-problem
-    intro = parts[0].strip()
-
-    # Process sub-problem pairs
-    for i in range(1, len(parts), 2):
-        if i + 1 < len(parts):
-            sub_num = parts[i].strip()
-            sub_content = parts[i + 1].strip()
-
-            # Combine intro with sub-problem if intro exists
-            if intro:
-                full_content = f"{intro}\n\n{sub_num}) {sub_content}"
-            else:
-                full_content = f"{sub_num}) {sub_content}"
-
-            sub_problems.append((sub_num, full_content))
-
-    return sub_problems
 
 
 def create_benchmark():
@@ -213,7 +152,6 @@ def create_benchmark():
     print("Dataset Statistics:")
     print(f"  Total exercises: {len(all_exercises)}")
     print(f"  Homeworks: {len(set(ex['homework'] for ex in all_exercises))}")
-    print(f"  Exercises with sub-problems: {sum(1 for ex in all_exercises if ex['sub_problem'])}")
 
     # Print sample
     if all_exercises:
@@ -223,8 +161,6 @@ def create_benchmark():
         print(f"  ID: {sample['full_id']}")
         print(f"  Homework: {sample['homework']}")
         print(f"  Exercise: {sample['exercise_number']}")
-        if sample['sub_problem']:
-            print(f"  Sub-problem: {sample['sub_problem']}")
         print(f"  Content preview: {sample['content'][:200]}...")
 
     # Print breakdown by homework
