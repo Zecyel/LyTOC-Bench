@@ -20,6 +20,10 @@ pretty_name: LyTOC Benchmark
 
 A curated collection of Theory of Computation and Algorithms homework exercises, extracted from academic PDFs using OCR and structured for machine learning evaluation.
 
+🔗 **Links:**
+- 📦 [HuggingFace Dataset](https://huggingface.co/datasets/Zecyel/LyTOC)
+- 💻 [GitHub Repository](https://github.com/Zecyel/LyTOC-Bench)
+
 ## Dataset Description
 
 ### Dataset Summary

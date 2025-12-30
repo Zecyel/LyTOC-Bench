@@ -2,6 +2,10 @@
 
 This repository contains a benchmark dataset extracted from homework PDFs using SimpleTex OCR API.
 
+🔗 **Links:**
+- 📦 [HuggingFace Dataset](https://huggingface.co/datasets/Zecyel/LyTOC)
+- 💻 [GitHub Repository](https://github.com/Zecyel/LyTOC-Bench)
+
 ## Features
 
 - Automated PDF content extraction using SimpleTex OCR API
