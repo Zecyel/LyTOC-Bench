@@ -1,0 +1,4 @@
+llama-parse
+datasets
+huggingface_hub
+python-dotenv
