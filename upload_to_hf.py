@@ -60,7 +60,7 @@ def upload_to_huggingface(repo_name, private=False):
     # Upload additional files (README, JSON, JSONL)
     print("\nUploading additional files...")
     files_to_upload = [
-        ("README.md", "README.md"),
+        ("HF_README.md", "README.md"),  # Upload HF_README.md as README.md
         ("benchmark_dataset/dataset.json", "dataset.json"),
         ("benchmark_dataset/dataset.jsonl", "dataset.jsonl"),
     ]
