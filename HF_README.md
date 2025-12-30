@@ -24,13 +24,13 @@ A curated collection of Theory of Computation and Algorithms homework exercises,
 
 ### Dataset Summary
 
-The LyTOC (Logic and Theory of Computation) Benchmark contains 28 carefully extracted exercises from 9 homework assignments covering fundamental topics in theoretical computer science. Each exercise is preserved with its original LaTeX mathematical notation, making it suitable for evaluating language models on formal reasoning tasks.
+The LyTOC (Logic and Theory of Computation) Benchmark contains 27 carefully extracted exercises from 9 homework assignments covering fundamental topics in theoretical computer science. Each exercise is preserved with its original LaTeX mathematical notation, making it suitable for evaluating language models on formal reasoning tasks.
 
 **Key Features:**
-- 28 exercises across 9 homework assignments
+- 27 exercises across 9 homework assignments
 - Topics: automata theory, complexity theory, Turing machines, formal languages, algorithm analysis
 - LaTeX mathematical notation preserved
-- Structured with exercise numbers and sub-problems
+- Structured with exercise numbers
 - Clean extraction with OCR post-processing
 
 ### Supported Tasks
@@ -48,13 +48,12 @@ The LyTOC (Logic and Theory of Computation) Benchmark contains 28 carefully extr
 
 ### Data Instances
 
-Each instance represents a single exercise or sub-problem:
+Each instance represents a single exercise:
 
 ```json
 {
   "homework": "hw1",
   "exercise_number": "3",
-  "sub_problem": null,
   "content": "Let $\\Sigma = \\{0, 1\\}$. Let language\n\n$$L = \\{w \\in \\{0, 1\\}^* : w \\text{ has an unequal number of 0's and 1's}\\}.$$\n\nProve $L^* = \\Sigma^*$.",
   "full_id": "hw1_ex3"
 }
@@ -64,19 +63,17 @@ Each instance represents a single exercise or sub-problem:
 
 - `homework` (string): Homework identifier (e.g., "hw1", "hw2", "hw13")
 - `exercise_number` (string): Exercise number within the homework (e.g., "1", "2", "3")
-- `sub_problem` (string or null): Sub-problem identifier if the exercise has multiple parts (e.g., "1", "2")
 - `content` (string): Full exercise text including LaTeX mathematical notation
 - `full_id` (string): Unique identifier for the exercise (e.g., "hw1_ex3", "hw2_ex3_1")
 
 ### Data Splits
 
-The dataset consists of a single split containing all 28 exercises.
+The dataset consists of a single split containing all 27 exercises.
 
 ## Dataset Statistics
 
-- **Total Exercises**: 28
+- **Total Exercises**: 27
 - **Homeworks**: 9 (hw1, hw2, hw3, hw5, hw6, hw9, hw10, hw11, hw13)
-- **Exercises with Sub-problems**: 2
 - **Average Content Length**: ~200-500 characters per exercise
 
 ### Topic Distribution
@@ -109,7 +106,6 @@ The dataset was created from homework assignments in a Theory of Computation and
 2. **OCR Processing**: Extract text using SimpleTex OCR API
 3. **Punctuation Normalization**: Convert Chinese punctuation to English equivalents
 4. **Exercise Splitting**: Use regex patterns to identify exercise boundaries
-5. **Sub-problem Detection**: Identify and separate sub-problems within exercises
 6. **Metadata Generation**: Create unique identifiers and structure data
 
 ### Annotations
@@ -176,7 +172,7 @@ For questions or issues regarding this dataset, please open an issue on the data
 from datasets import load_dataset
 
 # Load the dataset
-dataset = load_dataset("lytoc-benchmark")
+dataset = load_dataset("Zecyel/LyTOC")
 
 # Access an exercise
 exercise = dataset['train'][0]
@@ -190,4 +186,4 @@ print(f"Homework 1 has {len(hw1_exercises)} exercises")
 
 ## Version History
 
-- **v1.0.0** (2025-12-30): Initial release with 28 exercises from 9 homework assignments
+- **v1.0.0** (2025-12-30): Initial release with 27 exercises from 9 homework assignments
