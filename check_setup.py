@@ -89,7 +89,7 @@ def main():
     load_dotenv()
 
     env_vars = [
-        "LLAMA_CLOUD_API_KEY",
+        "OCR_UAT",
         "HF_TOKEN",
     ]
 
@@ -100,7 +100,10 @@ def main():
     # Check Python packages
     print("\n📌 Python Packages:")
     packages = [
-        "llama_parse",
+        "fitz",
+        "PIL",
+        "requests",
+        "tqdm",
         "datasets",
         "huggingface_hub",
         "dotenv",

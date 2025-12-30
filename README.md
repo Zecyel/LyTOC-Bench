@@ -1,10 +1,10 @@
 # LyTOC Benchmark
 
-This repository contains a benchmark dataset extracted from homework PDFs using LlamaParse.
+This repository contains a benchmark dataset extracted from homework PDFs using SimpleTex OCR API.
 
 ## Features
 
-- Automated PDF content extraction using LlamaParse
+- Automated PDF content extraction using SimpleTex OCR API
 - Structured benchmark dataset creation
 - Multiple export formats (JSON, JSONL, HuggingFace Dataset)
 - Easy upload to HuggingFace Hub
@@ -23,7 +23,7 @@ pip install -r requirements.txt
 ```bash
 cp .env.example .env
 # Edit .env and add your API keys:
-# - LLAMA_CLOUD_API_KEY: Get from https://cloud.llamaindex.ai
+# - OCR_UAT: Get from https://simpletex.cn
 # - HF_TOKEN: Get from https://huggingface.co/settings/tokens
 ```
 
@@ -86,8 +86,8 @@ Example:
 ## Scripts
 
 ### extract_pdfs.py
-Extracts content from PDF files in the `raw/` directory using LlamaParse.
-- Converts PDFs to markdown format
+Extracts content from PDF files in the `raw/` directory using SimpleTex OCR API.
+- Converts PDFs to markdown format via OCR
 - Saves parsed content to `parsed_data/`
 - Creates extraction metadata
 
@@ -109,7 +109,7 @@ Interactive script that runs the complete pipeline with user prompts.
 ## Requirements
 
 - Python 3.8+
-- LlamaParse API key
+- SimpleTex API token (OCR_UAT)
 - HuggingFace account and token (for upload)
 
 ## License

@@ -1,5 +1,8 @@
-llama-parse
 datasets
 huggingface_hub
 python-dotenv
 pandas
+pymupdf
+pillow
+requests
+tqdm
